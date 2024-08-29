@@ -4,6 +4,7 @@ package viam.app.v1;
 
 import "app/mltraining/v1/ml_training.proto";
 import "app/packages/v1/packages.proto";
+import "app/v1/common.proto";
 import "common/v1/common.proto";
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
@@ -595,7 +596,7 @@ message LocationAuthResponse {
 }
 
 message GetRobotRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "robot_id"];
 }
 
 message GetRoverRentalRobotsRequest {
@@ -626,7 +627,7 @@ message GetRobotPartsResponse {
 }
 
 message GetRobotPartRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "robot_part_id"];
 }
 
 message GetRobotPartResponse {
@@ -635,7 +636,7 @@ message GetRobotPartResponse {
 }
 
 message GetRobotPartLogsRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "robot_part_id"];
   // TODO(https://viam.atlassian.net/browse/APP-3877): Remove this field
   bool errors_only = 2 [deprecated = true];
   optional string filter = 3;
@@ -654,7 +655,7 @@ message GetRobotPartLogsResponse {
 }
 
 message TailRobotPartLogsRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "robot_part_id"];
   bool errors_only = 2;
   optional string filter = 3;
 }
@@ -664,7 +665,7 @@ message TailRobotPartLogsResponse {
 }
 
 message GetRobotPartHistoryRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "robot_part_id"];
 }
 
 message GetRobotPartHistoryResponse {
@@ -672,7 +673,7 @@ message GetRobotPartHistoryResponse {
 }
 
 message UpdateRobotPartRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "robot_part_id"];
   string name = 2;
   google.protobuf.Struct robot_config = 3;
 }
@@ -691,7 +692,7 @@ message NewRobotPartResponse {
 }
 
 message DeleteRobotPartRequest {
-  string part_id = 1;
+  string part_id = 1 [(canonical_name) = "robot_part_id"];
 }
 
 message GetRobotAPIKeysRequest {
@@ -756,7 +757,7 @@ message ListFragmentsResponse {
 }
 
 message GetFragmentRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "fragment_id"];
 }
 
 message GetFragmentResponse {
@@ -775,7 +776,7 @@ message CreateFragmentResponse {
 }
 
 message UpdateFragmentRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "fragment_id"];
   string name = 2;
   google.protobuf.Struct config = 3;
   optional bool public = 4;
@@ -787,13 +788,13 @@ message UpdateFragmentResponse {
 }
 
 message DeleteFragmentRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "fragment_id"];
 }
 
 message DeleteFragmentResponse {}
 
 message GetFragmentHistoryRequest {
-  string id = 1;
+  string id = 1 [(canonical_name) = "fragment_id"];
   optional string page_token = 2;
   optional int64 page_limit = 3;
 }

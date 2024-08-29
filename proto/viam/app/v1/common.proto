@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package viam.app.v1;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "go.viam.com/api/app/v1";
+
+extend google.protobuf.FieldOptions {
+  // canonical_name is used on messages to clearly specify the name of a field
+  // to be used for canonical naming purposes. For example, a field may be named
+  // id when it's really an organization ID. This option helps preserve API
+  // compatability and reduces guess work for doing introspection on message fields.
+  optional string canonical_name = 84261;
+}
